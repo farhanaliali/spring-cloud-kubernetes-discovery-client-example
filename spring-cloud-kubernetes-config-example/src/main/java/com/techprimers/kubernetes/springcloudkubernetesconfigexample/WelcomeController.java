@@ -14,7 +14,11 @@ public class WelcomeController {
 
     @GetMapping
     public String welcome() {
-        System.out.println(message);
-        return message;
+        
+        
+        
+        String url = "http://users-service:8080/users";
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
+        System.out.println("Calling via Discovery Client.... " + responseEntity.getBody());
     }
 }
